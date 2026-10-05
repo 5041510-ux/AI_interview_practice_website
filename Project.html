@@ -1,0 +1,3374 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CodePractice Pro - Learn, Practice & Prepare</title>
+
+<style>
+:root{
+    --primary:#6366f1;
+    --secondary:#8b5cf6;
+    --accent:#22c55e;
+    --danger:#ef4444;
+    --bg:#f5f7fb;
+    --card:#ffffff;
+    --text:#172033;
+    --muted:#64748b;
+    --dark:#111827;
+    --border:#e5e7eb;
+    --shadow:0 12px 35px rgba(15,23,42,.09);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#111827;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 5%;
+    box-shadow:0 4px 20px rgba(0,0,0,.15);
+}
+
+.logo{
+    font-size:23px;
+    font-weight:800;
+    white-space:nowrap;
+}
+
+.logo span{
+    color:#8b5cf6;
+}
+
+.navlinks{
+    display:flex;
+    gap:5px;
+    align-items:center;
+}
+
+.navlinks button{
+    background:transparent;
+    color:#dbeafe;
+    border:0;
+    padding:8px 10px;
+    border-radius:8px;
+}
+
+.navlinks button:hover{
+    background:#374151;
+    color:white;
+}
+
+.nav-actions{
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+
+.nav-actions button{
+    border:0;
+    padding:8px 12px;
+    border-radius:8px;
+}
+
+.dark-btn{
+    background:#374151;
+    color:white;
+}
+
+.login-btn{
+    background:var(--primary);
+    color:white;
+}
+
+.mobile-menu{
+    display:none;
+    background:#374151;
+    border:0;
+    color:white;
+    padding:8px 12px;
+    border-radius:8px;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.hero{
+    padding:80px 7%;
+    min-height:620px;
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    align-items:center;
+    gap:50px;
+    background:
+    radial-gradient(circle at top right,rgba(139,92,246,.25),transparent 35%),
+    linear-gradient(135deg,#eef2ff,#f8fafc);
+}
+
+.hero h1{
+    font-size:54px;
+    line-height:1.08;
+    margin-bottom:22px;
+}
+
+.gradient-text{
+    background:linear-gradient(90deg,#6366f1,#8b5cf6,#ec4899);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    color:var(--muted);
+    font-size:18px;
+    max-width:650px;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:0;
+    border-radius:10px;
+    padding:12px 20px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.btn-primary{
+    background:var(--primary);
+    color:white;
+}
+
+.btn-secondary{
+    background:white;
+    color:var(--primary);
+    border:1px solid #c7d2fe;
+}
+
+.hero-card{
+    background:white;
+    padding:25px;
+    border-radius:22px;
+    box-shadow:var(--shadow);
+}
+
+.hero-code{
+    background:#111827;
+    color:#e5e7eb;
+    border-radius:14px;
+    padding:25px;
+    font-family:monospace;
+    overflow:auto;
+}
+
+.hero-code .purple{
+    color:#c084fc;
+}
+
+.hero-code .green{
+    color:#4ade80;
+}
+
+.hero-code .blue{
+    color:#60a5fa;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    padding:35px 7%;
+}
+
+.stat{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:var(--shadow);
+    text-align:center;
+}
+
+.stat h2{
+    color:var(--primary);
+    font-size:32px;
+}
+
+.section{
+    padding:60px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-title h2{
+    font-size:35px;
+    margin-bottom:8px;
+}
+
+.section-title p{
+    color:var(--muted);
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.card{
+    background:var(--card);
+    padding:25px;
+    border-radius:17px;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+.card-icon{
+    font-size:38px;
+    margin-bottom:12px;
+}
+
+.card h3{
+    margin-bottom:8px;
+}
+
+.card p{
+    color:var(--muted);
+    margin-bottom:15px;
+}
+
+.card button{
+    border:0;
+    background:#eef2ff;
+    color:#4f46e5;
+    padding:9px 15px;
+    border-radius:8px;
+    font-weight:700;
+}
+
+.search-box{
+    width:100%;
+    max-width:600px;
+    display:block;
+    margin:0 auto 30px;
+    padding:14px 18px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    outline:none;
+    background:white;
+}
+
+.search-box:focus{
+    border-color:var(--primary);
+}
+
+.quiz-container{
+    max-width:850px;
+    margin:auto;
+}
+
+.quiz-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+    background:white;
+    padding:18px;
+    border-radius:14px;
+}
+
+.timer{
+    background:#fee2e2;
+    color:#b91c1c;
+    padding:8px 14px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.progress{
+    height:8px;
+    background:#e5e7eb;
+    border-radius:10px;
+    overflow:hidden;
+    margin-bottom:25px;
+}
+
+.progress-bar{
+    height:100%;
+    background:linear-gradient(90deg,#6366f1,#8b5cf6);
+    width:0;
+    transition:.3s;
+}
+
+.question-card{
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:var(--shadow);
+}
+
+.question-number{
+    color:var(--primary);
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.question-card h2{
+    margin-bottom:25px;
+}
+
+.options{
+    display:grid;
+    gap:12px;
+}
+
+.option{
+    padding:15px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:#fff;
+    text-align:left;
+    transition:.2s;
+}
+
+.option:hover{
+    border-color:var(--primary);
+    background:#eef2ff;
+}
+
+.option.selected{
+    border-color:var(--primary);
+    background:#eef2ff;
+}
+
+.option.correct{
+    border-color:#22c55e;
+    background:#dcfce7;
+}
+
+.option.wrong{
+    border-color:#ef4444;
+    background:#fee2e2;
+}
+
+.quiz-actions{
+    margin-top:25px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.result{
+    text-align:center;
+    padding:40px;
+}
+
+.result-score{
+    font-size:60px;
+    color:var(--primary);
+    font-weight:800;
+}
+
+.accordion{
+    max-width:900px;
+    margin:auto;
+}
+
+.accordion-item{
+    background:white;
+    border-radius:12px;
+    margin-bottom:12px;
+    border:1px solid var(--border);
+    overflow:hidden;
+}
+
+.accordion-question{
+    width:100%;
+    border:0;
+    background:white;
+    padding:18px;
+    text-align:left;
+    display:flex;
+    justify-content:space-between;
+    font-weight:bold;
+}
+
+.accordion-answer{
+    display:none;
+    padding:0 18px 18px;
+    color:var(--muted);
+}
+
+.accordion-item.open .accordion-answer{
+    display:block;
+}
+
+.topic-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.topic{
+    background:white;
+    padding:20px;
+    border-radius:14px;
+    border:1px solid var(--border);
+}
+
+.topic h3{
+    margin-bottom:8px;
+}
+
+.topic p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.dashboard-card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:var(--shadow);
+}
+
+.dashboard-card h3{
+    color:var(--muted);
+    font-size:15px;
+}
+
+.dashboard-card strong{
+    display:block;
+    font-size:32px;
+    margin-top:8px;
+}
+
+.resume-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.form-card,
+.resume-preview{
+    background:white;
+    padding:28px;
+    border-radius:16px;
+    box-shadow:var(--shadow);
+}
+
+.form-group{
+    margin-bottom:16px;
+}
+
+.form-group label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:11px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    outline:none;
+}
+
+.form-group textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.resume-preview h1{
+    font-size:30px;
+}
+
+.resume-preview .resume-role{
+    color:var(--primary);
+    margin-bottom:15px;
+}
+
+.resume-section{
+    margin-top:20px;
+}
+
+.resume-section h3{
+    border-bottom:2px solid var(--primary);
+    padding-bottom:5px;
+    margin-bottom:8px;
+}
+
+.mock-container{
+    max-width:850px;
+    margin:auto;
+}
+
+.mock-question{
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:var(--shadow);
+}
+
+.mock-score{
+    font-size:28px;
+    color:var(--primary);
+    font-weight:bold;
+}
+
+footer{
+    background:#111827;
+    color:#cbd5e1;
+    padding:40px 7%;
+    margin-top:40px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:30px;
+}
+
+footer h3{
+    color:white;
+    margin-bottom:12px;
+}
+
+footer a{
+    color:#cbd5e1;
+    text-decoration:none;
+    display:block;
+    margin:7px 0;
+}
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:2000;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    background:white;
+    width:90%;
+    max-width:430px;
+    padding:30px;
+    border-radius:18px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    top:12px;
+    right:15px;
+    border:0;
+    background:none;
+    font-size:25px;
+}
+
+.empty{
+    text-align:center;
+    padding:50px;
+    color:var(--muted);
+}
+
+@media(max-width:1000px){
+    .navlinks{
+        display:none;
+        position:absolute;
+        top:65px;
+        left:0;
+        right:0;
+        background:#111827;
+        padding:15px;
+        flex-direction:column;
+    }
+
+    .navlinks.show{
+        display:flex;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .topic-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .dashboard-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .resume-layout{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:650px){
+    .hero{
+        padding:55px 5%;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+        padding:25px 5%;
+    }
+
+    .section{
+        padding:45px 5%;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .topic-grid{
+        grid-template-columns:1fr;
+    }
+
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .nav{
+        padding:12px 5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="nav">
+
+    <div class="logo">
+        💻 Code<span>Practice</span>
+    </div>
+
+    <button class="mobile-menu" onclick="toggleMenu()">☰</button>
+
+    <div class="navlinks" id="navlinks">
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('dashboard')">Dashboard</button>
+        <button onclick="showPage('languages')">Programming</button>
+        <button onclick="showPage('interview')">Interview</button>
+        <button onclick="showPage('dsa')">DSA</button>
+        <button onclick="showPage('sql')">SQL</button>
+        <button onclick="showPage('subjects')">Core Subjects</button>
+        <button onclick="showPage('resume')">Resume</button>
+        <button onclick="showPage('mock')">Mock Interview</button>
+    </div>
+
+    <div class="nav-actions">
+        <button class="dark-btn" onclick="toggleDark()">🌙</button>
+        <button class="login-btn" onclick="openModal()">Login</button>
+    </div>
+
+</nav>
+
+
+<!-- HOME -->
+<section id="home" class="page active">
+
+    <div class="hero">
+
+        <div>
+
+            <h1>
+                Learn Coding.
+                <span class="gradient-text">
+                    Practice Smart.
+                </span>
+                Get Interview Ready.
+            </h1>
+
+            <p>
+                CodePractice is a student-friendly platform for learning
+                programming, solving MCQs, practicing DSA and SQL,
+                preparing technical interviews and creating resumes.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="btn btn-primary"
+                        onclick="showPage('languages')">
+                    Start Practicing →
+                </button>
+
+                <button class="btn btn-secondary"
+                        onclick="showPage('interview')">
+                    Interview Preparation
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <div class="hero-code">
+
+                <div>
+                    <span class="purple">def</span>
+                    <span class="blue"> solve_problem</span>():
+                </div>
+
+                <br>
+
+                <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="purple">while</span>
+                    not problem_solved:
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    practice()
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    learn()
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    improve()
+                </div>
+
+                <br>
+
+                <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="green">return</span>
+                    success
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat">
+            <h2>120+</h2>
+            <p>MCQ Questions</p>
+        </div>
+
+        <div class="stat">
+            <h2>6</h2>
+            <p>Programming Languages</p>
+        </div>
+
+        <div class="stat">
+            <h2>20+</h2>
+            <p>Interview Topics</p>
+        </div>
+
+        <div class="stat">
+            <h2>100%</h2>
+            <p>Student Friendly</p>
+        </div>
+
+    </div>
+
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <h2>Everything You Need</h2>
+
+            <p>
+                One platform for coding practice and interview preparation.
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-icon">💻</div>
+
+                <h3>Programming Practice</h3>
+
+                <p>
+                    Practice Python, Java, JavaScript, C, C++
+                    and HTML/CSS questions.
+                </p>
+
+                <button onclick="showPage('languages')">
+                    Explore
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🧠</div>
+
+                <h3>DSA Practice</h3>
+
+                <p>
+                    Learn arrays, strings, linked lists, trees,
+                    graphs, sorting and searching.
+                </p>
+
+                <button onclick="showPage('dsa')">
+                    Learn DSA
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🎯</div>
+
+                <h3>Interview Preparation</h3>
+
+                <p>
+                    Prepare technical, HR and project-based
+                    interview questions.
+                </p>
+
+                <button onclick="showPage('interview')">
+                    Prepare
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🗄️</div>
+
+                <h3>SQL Practice</h3>
+
+                <p>
+                    Learn SQL queries, joins, grouping,
+                    normalization and database concepts.
+                </p>
+
+                <button onclick="showPage('sql')">
+                    Practice
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">📚</div>
+
+                <h3>Core Subjects</h3>
+
+                <p>
+                    Study DBMS, OS, Computer Networks,
+                    OOP, Cloud Computing and Cyber Security.
+                </p>
+
+                <button onclick="showPage('subjects')">
+                    Study
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">📄</div>
+
+                <h3>Resume Builder</h3>
+
+                <p>
+                    Create a simple professional resume
+                    using your skills and education.
+                </p>
+
+                <button onclick="showPage('resume')">
+                    Create Resume
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="page">
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <h2>📊 My Dashboard</h2>
+
+            <p>
+                Track your learning and quiz progress.
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+            <div class="dashboard-card">
+                <h3>Questions Attempted</h3>
+                <strong id="dashAttempted">0</strong>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Correct Answers</h3>
+                <strong id="dashCorrect">0</strong>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Tests Completed</h3>
+                <strong id="dashTests">0</strong>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Readiness</h3>
+                <strong id="dashReadiness">0%</strong>
+            </div>
+
+        </div>
+
+
+        <div class="section">
+
+            <div class="section-title">
+                <h2>Language Progress</h2>
+            </div>
+
+            <div id="languageProgress" class="cards"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROGRAMMING LANGUAGES -->
+<section id="languages" class="page">
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <h2>💻 Programming Practice</h2>
+
+            <p>
+                Select a language and solve 20 MCQ questions.
+            </p>
+
+        </div>
+
+
+        <input
+            id="languageSearch"
+            class="search-box"
+            placeholder="Search programming language..."
+            oninput="filterLanguages()"
+        >
+
+
+        <div id="languageCards" class="cards"></div>
+
+    </div>
+
+</section>
+
+
+<!-- QUIZ -->
+<section id="quiz" class="page">
+
+    <div class="section">
+
+        <div class="quiz-container">
+
+            <div class="quiz-header">
+
+                <strong id="quizLanguage">
+                    Quiz
+                </strong>
+
+                <div class="timer" id="timer">
+                    10:00
+                </div>
+
+            </div>
+
+
+            <div class="progress">
+
+                <div
+                    id="quizProgress"
+                    class="progress-bar">
+                </div>
+
+            </div>
+
+
+            <div id="quizArea"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INTERVIEW -->
+<section id="interview" class="page">
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <h2>🎯 Interview Preparation</h2>
+
+            <p>
+                Practice technical, HR and project interview questions.
+            </p>
+
+        </div>
+
+
+        <input
+            class="search-box"
+            id="interviewSearch"
+            placeholder="Search interview question..."
+            oninput="filterInterview()"
+        >
+
+
+        <div id="interviewList" class="accordion"></div>
+
+    </div>
+
+</section>
+
+
+<!-- DSA -->
+<section id="dsa" class="page">
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <h2>🧠 Data Structures & Algorithms</h2>
+
+            <p>
+                Build strong problem-solving fundamentals.
+            </p>
+
+        </div>
+
+        <div id="dsaCards" class="topic-grid"></div>
+
+    </div>
+
+</section>
+
+
+<!-- SQL -->
+<section id="sql" class="page">
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <h2>🗄️ SQL & Database</h2>
+
+            <p>
+                Learn important SQL and database concepts.
+            </p>
+
+        </div>
+
+        <div id="sqlCards" class="topic-grid"></div>
+
+    </div>
+
+</section>
+
+
+<!-- CORE SUBJECTS -->
+<section id="subjects" class="page">
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <h2>📚 Core Computer Science Subjects</h2>
+
+            <p>
+                Important concepts for college exams and interviews.
+            </p>
+
+        </div>
+
+        <div id="subjectCards" class="cards"></div>
+
+    </div>
+
+</section>
+
+
+<!-- RESUME -->
+<section id="resume" class="page">
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <h2>📄 Resume Builder</h2>
+
+            <p>
+                Enter your details and generate a resume preview.
+            </p>
+
+        </div>
+
+
+        <div class="resume-layout">
+
+            <div class="form-card">
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input id="resumeName"
+                           placeholder="Your Name">
+                </div>
+
+
+                <div class="form-group">
+                    <label>Career / Job Role</label>
+                    <input id="resumeRole"
+                           placeholder="BSc Computer Science Student">
+                </div>
+
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input id="resumeEmail"
+                           placeholder="your@email.com">
+                </div>
+
+
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input id="resumePhone"
+                           placeholder="+91 XXXXX XXXXX">
+                </div>
+
+
+                <div class="form-group">
+                    <label>Education</label>
+                    <textarea id="resumeEducation"
+                              placeholder="BSc Computer Science - College Name"></textarea>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Skills</label>
+                    <textarea id="resumeSkills"
+                              placeholder="Python, Java, HTML, CSS, SQL"></textarea>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Projects</label>
+                    <textarea id="resumeProjects"
+                              placeholder="Project name and description"></textarea>
+                </div>
+
+
+                <div class="form-group">
+                    <label>About Me</label>
+                    <textarea id="resumeAbout"
+                              placeholder="Write a short professional summary"></textarea>
+                </div>
+
+
+                <button
+                    class="btn btn-primary"
+                    onclick="previewResume()">
+                    Generate Resume
+                </button>
+
+                <button
+                    class="btn btn-secondary"
+                    onclick="printResume()">
+                    Print Resume
+                </button>
+
+            </div>
+
+
+            <div class="resume-preview" id="resumePreview">
+
+                <h1>Your Name</h1>
+
+                <div class="resume-role">
+                    Computer Science Student
+                </div>
+
+                <p>
+                    Email: your@email.com
+                </p>
+
+                <p>
+                    Phone: +91 XXXXX XXXXX
+                </p>
+
+
+                <div class="resume-section">
+
+                    <h3>About Me</h3>
+
+                    <p>
+                        Your professional summary will appear here.
+                    </p>
+
+                </div>
+
+
+                <div class="resume-section">
+
+                    <h3>Education</h3>
+
+                    <p>
+                        Your education details.
+                    </p>
+
+                </div>
+
+
+                <div class="resume-section">
+
+                    <h3>Skills</h3>
+
+                    <p>
+                        Your technical skills.
+                    </p>
+
+                </div>
+
+
+                <div class="resume-section">
+
+                    <h3>Projects</h3>
+
+                    <p>
+                        Your projects.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MOCK INTERVIEW -->
+<section id="mock" class="page">
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <h2>🎤 Mock Interview</h2>
+
+            <p>
+                Practice answering interview questions.
+            </p>
+
+        </div>
+
+
+        <div class="mock-container">
+
+            <div id="mockArea" class="mock-question">
+
+                <h3>
+                    Ready for your mock interview?
+                </h3>
+
+                <p style="margin:15px 0;color:#64748b;">
+                    You will get 10 random technical and HR questions.
+                </p>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="startMock()">
+                    Start Mock Interview
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h3>💻 CodePractice</h3>
+
+            <p>
+                Learn coding, practice questions and
+                prepare for technical interviews.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>Learn</h3>
+
+            <a href="#" onclick="showPage('languages')">
+                Programming
+            </a>
+
+            <a href="#" onclick="showPage('dsa')">
+                DSA
+            </a>
+
+            <a href="#" onclick="showPage('sql')">
+                SQL
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Prepare</h3>
+
+            <a href="#" onclick="showPage('interview')">
+                Interview
+            </a>
+
+            <a href="#" onclick="showPage('mock')">
+                Mock Interview
+            </a>
+
+            <a href="#" onclick="showPage('resume')">
+                Resume
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Resources</h3>
+
+            <a href="#" onclick="showPage('subjects')">
+                Core Subjects
+            </a>
+
+            <a href="#" onclick="showPage('dashboard')">
+                Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <p style="text-align:center;">
+        © 2026 CodePractice. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+
+    <div class="modal-box">
+
+        <button class="close"
+                onclick="closeModal()">
+            ×
+        </button>
+
+        <h2>Login</h2>
+
+        <p style="color:#64748b;margin-bottom:20px;">
+            Login to track your coding progress.
+        </p>
+
+
+        <div class="form-group">
+
+            <label>Email</label>
+
+            <input
+                id="loginEmail"
+                type="email"
+                placeholder="Enter email">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Password</label>
+
+            <input
+                id="loginPassword"
+                type="password"
+                placeholder="Enter password">
+
+        </div>
+
+
+        <button
+            class="btn btn-primary"
+            style="width:100%;"
+            onclick="fakeLogin()">
+
+            Login
+
+        </button>
+
+        <p
+            style="text-align:center;margin-top:15px;color:#64748b;font-size:13px;">
+
+            Demo login - no backend required
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   QUESTION DATABASE
+========================= */
+
+const questions = {
+
+Python: [
+
+["Which keyword is used to define a function in Python?",
+ "function","def","func","define","B"],
+
+["Which of the following is immutable?",
+ "List","Dictionary","Tuple","Set","C"],
+
+["What is the output of len([1,2,3])?",
+ "2","3","4","Error","B"],
+
+["Which symbol is used for comments?",
+ "//","#","<!-- -->","/* */","B"],
+
+["Which method adds an element to a list?",
+ "add()","insertEnd()","append()","push()","C"],
+
+["What is 2 ** 3?",
+ "6","8","9","12","B"],
+
+["Which data type stores key-value pairs?",
+ "List","Tuple","Dictionary","String","C"],
+
+["What type does input() return?",
+ "Integer","String","Float","Boolean","B"],
+
+["Which keyword is used for exception handling?",
+ "try","error","catch","exception","A"],
+
+["Which operator checks equality?",
+ "=","==","===","!=","B"],
+
+["Which function converts a value into an integer?",
+ "str()","float()","int()","number()","C"],
+
+["What is a virtual environment used for?",
+ "Gaming","Package isolation","Web design","Database backup","B"],
+
+["Which loop is commonly used to iterate over a sequence?",
+ "while","for","repeat","loop","B"],
+
+["What does // perform in Python?",
+ "Normal division","Floor division","Power","Modulo","B"],
+
+["Which keyword creates a class?",
+ "object","define","class","struct","C"],
+
+["What does None represent?",
+ "Zero","False","No value","Empty string","C"],
+
+["Which keyword imports a module?",
+ "include","using","import","require","C"],
+
+["Which creates an anonymous function?",
+ "lambda","anonymous","func","def","A"],
+
+["What is PEP 8?",
+ "Python compiler","Style guide","Database","Framework","B"],
+
+["Which keyword exits a loop?",
+ "exit","stop","break","end","C"]
+
+],
+
+Java: [
+
+["Which keyword is used to create a class?",
+ "class","struct","define","object","A"],
+
+["Which method is the entry point of a Java application?",
+ "start()","run()","main()","execute()","C"],
+
+["Which data type stores true or false?",
+ "boolean","bool","bit","logical","A"],
+
+["Which keyword is used for inheritance?",
+ "inherit","extends","implements","super","B"],
+
+["Which keyword creates an object?",
+ "create","new","object","make","B"],
+
+["Which interface is commonly used for ordered collections?",
+ "Set","List","Map","Queue","B"],
+
+["Which type stores text?",
+ "char","String","text","varchar","B"],
+
+["Which exception occurs during input/output operations?",
+ "IOException","MathException","InputError","FileException","A"],
+
+["What runs Java bytecode?",
+ "JDK","JVM","JRE Compiler","OS","B"],
+
+["Which keyword prevents variable modification?",
+ "constant","final","static","fixed","B"],
+
+["Which OOP concept hides implementation details?",
+ "Inheritance","Encapsulation","Polymorphism","Compilation","A"],
+
+["Which collection does not allow duplicate elements?",
+ "List","Set","ArrayList","Vector","B"],
+
+["Which operator compares primitive values?",
+ "equals()","==","compare()","===","B"],
+
+["Which method compares String contents?",
+ "==","compare","equals()","same()","C"],
+
+["What does this refer to?",
+ "Parent class","Current object","Package","Method","B"],
+
+["Which keyword refers to parent class members?",
+ "parent","base","super","this","C"],
+
+["Can Java support method overloading?",
+ "Yes","No","Only constructors","Only static methods","A"],
+
+["Which package contains Scanner?",
+ "java.io","java.util","java.lang","java.scan","B"],
+
+["What removes unused objects?",
+ "Destructor","Garbage Collector","Compiler","JVM shutdown","B"],
+
+["Which access modifier provides widest access?",
+ "private","protected","default","public","D"]
+
+],
+
+JavaScript: [
+
+["Which keyword declares a block-scoped variable?",
+ "var","let","define","variable","B"],
+
+["Which keyword declares a constant?",
+ "const","constant","final","static","A"],
+
+["Which symbol creates a single-line comment?",
+ "//","#","<!-- -->","/* */","A"],
+
+["typeof null returns?",
+ "null","object","undefined","boolean","B"],
+
+["Which method adds an item to the end of an array?",
+ "add()","push()","append()","insert()","B"],
+
+["Which method removes the last array element?",
+ "pop()","remove()","delete()","last()","A"],
+
+["Which operator checks strict equality?",
+ "=","==","===","!=","C"],
+
+["JSON.parse() converts JSON into?",
+ "String","Object","Array only","Number","B"],
+
+["Which function runs code after a delay?",
+ "delay()","setTimeout()","wait()","setDelay()","B"],
+
+["What does NaN mean?",
+ "No Array Number","Not a Number","Null and Null","New Number","B"],
+
+["Which method transforms array elements?",
+ "map()","change()","transform()","convert()","A"],
+
+["Which method selects elements based on condition?",
+ "select()","where()","filter()","findAll()","C"],
+
+["Which keyword handles an error?",
+ "catch","error","handle","except","A"],
+
+["Which object represents the webpage?",
+ "window","document","page","html","B"],
+
+["DOM stands for?",
+ "Data Object Model","Document Object Model","Digital Object Method","Document Order Model","B"],
+
+["Which syntax creates an arrow function?",
+ "->","=>","<=","==>","B"],
+
+["A Promise represents?",
+ "Future asynchronous result","Loop","Variable","HTML element","A"],
+
+["Which keyword waits for a Promise?",
+ "wait","async","await","pause","C"],
+
+["Which stores data in browser permanently until cleared?",
+ "cookies only","localStorage","memoryStorage","session","B"],
+
+["Which keyword imports modules?",
+ "include","import","requireOnly","using","B"]
+
+],
+
+C: [
+
+["Which function starts a C program?",
+ "start()","main()","begin()","run()","B"],
+
+["Which symbol ends a C statement?",
+ ".",";",":","end","B"],
+
+["Which header is used for printf()?",
+ "stdlib.h","stdio.h","string.h","math.h","B"],
+
+["Which format specifier is used for integer?",
+ "%f","%c","%d","%s","C"],
+
+["Which operator gets address of a variable?",
+ "*","&","%","@","B"],
+
+["Which operator dereferences a pointer?",
+ "*","&","->","%","A"],
+
+["Which loop executes at least once?",
+ "for","while","do-while","foreach","C"],
+
+["Which keyword makes a variable constant?",
+ "constant","const","fixed","final","B"],
+
+["Which function dynamically allocates memory?",
+ "alloc()","malloc()","new()","memory()","B"],
+
+["Which function releases allocated memory?",
+ "delete()","remove()","free()","release()","C"],
+
+["Which header handles string functions?",
+ "stdio.h","string.h","stdlib.h","strings.h","B"],
+
+["Array indexing starts from?",
+ "0","1","-1","2","A"],
+
+["Which operator means logical AND?",
+ "&","&&","AND","||","B"],
+
+["Which operator means logical OR?",
+ "|","||","OR","&&","C"],
+
+["Which statement exits a loop?",
+ "stop","break","exitLoop","end","B"],
+
+["Which statement skips current iteration?",
+ "skip","continue","next","pass","B"],
+
+["A pointer stores?",
+ "Value only","Memory address","Data type","Function","B"],
+
+["Which keyword preserves variable between function calls?",
+ "static","save","persistent","keep","A"],
+
+["Which function reads formatted input?",
+ "input()","scanf()","read()","get()","B"],
+
+["Which operator accesses structure member through pointer?",
+ ".","->","::","&","B"]
+
+],
+
+CPlusPlus: [
+
+["C++ supports which programming paradigm?",
+ "Object-Oriented Programming","Only procedural","Only functional","Markup","A"],
+
+["Which header is used for input/output streams?",
+ "stdio.h","iostream","input.h","stream.h","B"],
+
+["Which object prints output?",
+ "cin","cout","print","output","B"],
+
+["Which object takes input?",
+ "cin","input","scan","get","A"],
+
+["Which keyword dynamically allocates memory?",
+ "malloc","new","alloc","create","B"],
+
+["Which keyword releases memory allocated by new?",
+ "free","remove","delete","clear","A"],
+
+["Which operator is used for scope resolution?",
+ ".","::","->","#","B"],
+
+["What is function overloading?",
+ "Same name with different parameters",
+ "Deleting functions",
+ "Calling one function",
+ "Changing variable type","A"],
+
+["How is inheritance specified in C++?",
+ "extends","public Base","inherits","using Base","B"],
+
+["Which access modifier is generally used for public members?",
+ "private","protected","public","internal","C"],
+
+["What is a constructor?",
+ "Special function used to initialize objects",
+ "Destructor",
+ "Variable",
+ "Header","A"],
+
+["What symbol is used before a destructor name?",
+ "~","!","@","#","A"],
+
+["Which STL container stores dynamic arrays?",
+ "vector","stack","queue","mapOnly","A"],
+
+["Which STL container follows FIFO?",
+ "stack","queue","vector","set","B"],
+
+["Which STL container follows LIFO?",
+ "queue","stack","list","map","B"],
+
+["Which keyword enables runtime polymorphism?",
+ "virtual","dynamic","runtime","overrideOnly","A"],
+
+["STL stands for?",
+ "Standard Template Library","System Type Library","Simple Template Language","Standard Tool List","A"],
+
+["Which cast is commonly used for explicit compile-time conversion?",
+ "static_cast","convert_cast","type_cast","cpp_cast","A"],
+
+["What is function overriding?",
+ "Derived class provides new implementation",
+ "Creating two functions",
+ "Deleting parent method",
+ "Creating variable","A"],
+
+["Which feature allows generic programming?",
+ "Templates","Pointers","Constructors","Namespaces","A"]
+
+],
+
+HTMLCSS: [
+
+["HTML stands for?",
+ "HyperText Markup Language","HighText Machine Language","Hyper Tool Markup Language","Hyperlink Text Language","A"],
+
+["Which tag creates a hyperlink?",
+ "<link>","<a>","<href>","<url>","B"],
+
+["Which tag inserts an image?",
+ "<image>","<img>","<pic>","<src>","B"],
+
+["Which tag represents the largest heading?",
+ "<h6>","<heading>","<h1>","<head>","C"],
+
+["Which attribute provides alternative text for an image?",
+ "title","alt","src","text","B"],
+
+["Which tag creates an unordered list?",
+ "<ol>","<ul>","<list>","<li>","B"],
+
+["Which tag represents a table row?",
+ "<td>","<table>","<tr>","<row>","C"],
+
+["Which CSS property changes text color?",
+ "font-color","color","text-color","foreground","B"],
+
+["Which CSS property changes background color?",
+ "background","bg-color","background-color","color-bg","C"],
+
+["Which CSS property changes text size?",
+ "font-size","text-size","size","font","A"],
+
+["Which selector targets an ID?",
+ ".","*","#","@","C"],
+
+["Which selector targets a class?",
+ ".","#","class","*","A"],
+
+["Which CSS layout system is useful for one-dimensional layouts?",
+ "Grid","Flexbox","Float only","Table","B"],
+
+["What does rem relate to?",
+ "Root font size","Screen width","Parent width","Viewport height","A"],
+
+["Which CSS declaration activates Flexbox?",
+ "display:flex","flex:true","layout:flex","display:flexbox","A"],
+
+["Which semantic tag is used for navigation?",
+ "<navigation>","<nav>","<menu-bar>","<navigate>","B"],
+
+["Which tag represents a paragraph?",
+ "<text>","<p>","<para>","<paragraph>","B"],
+
+["Which property rounds corners?",
+ "corner-radius","radius","border-radius","round-border","C"],
+
+["Which property creates space inside an element?",
+ "margin","padding","spacing","inside-space","B"],
+
+["Which unit is relative to viewport width?",
+ "em","rem","vw","px","C"]
+
+]
+
+};
+
+
+/* =========================
+   INTERVIEW QUESTIONS
+========================= */
+
+const interview = [
+
+{
+    category:"Technical",
+    q:"Tell me about yourself.",
+    a:"Give a short introduction covering your education, technical skills, projects, achievements and career goal."
+},
+
+{
+    category:"Technical",
+    q:"What is Object-Oriented Programming?",
+    a:"OOP is a programming approach based on objects and classes. The four major concepts are encapsulation, inheritance, polymorphism and abstraction."
+},
+
+{
+    category:"Technical",
+    q:"What is the difference between compiler and interpreter?",
+    a:"A compiler translates the complete program before execution, while an interpreter generally executes instructions incrementally."
+},
+
+{
+    category:"Technical",
+    q:"What is a database?",
+    a:"A database is an organized collection of data that can be stored, managed and retrieved efficiently."
+},
+
+{
+    category:"Technical",
+    q:"What is SQL?",
+    a:"SQL stands for Structured Query Language and is used to create, read, update and delete data in relational databases."
+},
+
+{
+    category:"Technical",
+    q:"What is primary key?",
+    a:"A primary key uniquely identifies each record in a database table."
+},
+
+{
+    category:"Technical",
+    q:"What is foreign key?",
+    a:"A foreign key is a column that creates a relationship between two database tables."
+},
+
+{
+    category:"Technical",
+    q:"What is an API?",
+    a:"API stands for Application Programming Interface. It allows different software systems to communicate with each other."
+},
+
+{
+    category:"Technical",
+    q:"What is Git?",
+    a:"Git is a distributed version-control system used to track code changes and collaborate on software projects."
+},
+
+{
+    category:"Technical",
+    q:"What is cloud computing?",
+    a:"Cloud computing provides computing resources such as servers, storage and applications over the internet."
+},
+
+{
+    category:"HR",
+    q:"Why should we hire you?",
+    a:"Explain your relevant skills, willingness to learn, problem-solving ability and how you can contribute to the organization."
+},
+
+{
+    category:"HR",
+    q:"What are your strengths?",
+    a:"Choose genuine strengths such as problem solving, teamwork, adaptability, communication or consistent learning."
+},
+
+{
+    category:"HR",
+    q:"What is your weakness?",
+    a:"Mention a genuine but manageable weakness and explain the specific steps you are taking to improve it."
+},
+
+{
+    category:"HR",
+    q:"Where do you see yourself in five years?",
+    a:"Explain a realistic professional direction involving skill development, responsibilities and contribution."
+},
+
+{
+    category:"HR",
+    q:"Why do you want to join our company?",
+    a:"Connect your skills and career goals with the company's technology, products, culture or opportunities."
+},
+
+{
+    category:"Project",
+    q:"Explain your project.",
+    a:"Explain the project problem, objective, technologies used, your role, important features and final outcome."
+},
+
+{
+    category:"Project",
+    q:"What was the biggest challenge in your project?",
+    a:"Describe one real technical or teamwork challenge and explain how you analyzed and solved it."
+},
+
+{
+    category:"Project",
+    q:"Which technology did you use and why?",
+    a:"Explain the technology's relevance to your project requirements and mention alternatives if appropriate."
+},
+
+{
+    category:"Project",
+    q:"What would you improve in your project?",
+    a:"Mention realistic future improvements such as better security, performance, UI, testing or scalability."
+}
+
+];
+
+
+/* =========================
+   DSA TOPICS
+========================= */
+
+const dsa = [
+
+["Arrays",
+ "A collection of elements stored using indexed positions."],
+
+["Strings",
+ "A sequence of characters used to represent text."],
+
+["Linked Lists",
+ "A linear data structure where nodes contain data and links."],
+
+["Stack",
+ "LIFO data structure. Example: undo operations."],
+
+["Queue",
+ "FIFO data structure. Example: task scheduling."],
+
+["Hashing",
+ "Technique used for fast data lookup using hash functions."],
+
+["Searching",
+ "Techniques such as linear search and binary search."],
+
+["Sorting",
+ "Arranging data using algorithms such as bubble, merge and quick sort."],
+
+["Trees",
+ "Hierarchical data structures containing parent-child relationships."],
+
+["Graphs",
+ "Structures consisting of vertices and edges."],
+
+["Recursion",
+ "A function calling itself to solve smaller versions of a problem."],
+
+["Time Complexity",
+ "Measures how an algorithm's running time grows with input size."]
+
+];
+
+
+/* =========================
+   SQL TOPICS
+========================= */
+
+const sql = [
+
+["SELECT",
+ "Used to retrieve data from a database table."],
+
+["WHERE",
+ "Filters records based on a condition."],
+
+["GROUP BY",
+ "Groups rows having similar values."],
+
+["HAVING",
+ "Filters grouped results."],
+
+["JOIN",
+ "Combines rows from multiple tables."],
+
+["INNER JOIN",
+ "Returns matching records from both tables."],
+
+["LEFT JOIN",
+ "Returns all records from the left table and matching records from the right table."],
+
+["Primary Key",
+ "Uniquely identifies each record."],
+
+["Foreign Key",
+ "Connects records between related tables."],
+
+["Normalization",
+ "Organizes database tables to reduce redundancy."],
+
+["Index",
+ "Improves the speed of database searches."],
+
+["Subquery",
+ "A query placed inside another SQL query."]
+
+];
+
+
+/* =========================
+   CORE SUBJECTS
+========================= */
+
+const subjects = [
+
+["🗄️","DBMS",
+ "Learn databases, SQL, normalization, keys, transactions and indexing."],
+
+["⚙️","Operating Systems",
+ "Learn processes, threads, scheduling, memory management and deadlocks."],
+
+["🌐","Computer Networks",
+ "Learn TCP/IP, HTTP, DNS, routing and networking fundamentals."],
+
+["🧩","Object-Oriented Programming",
+ "Understand classes, objects, inheritance, polymorphism and abstraction."],
+
+["💼","Software Engineering",
+ "Learn SDLC, Agile, testing, requirements and software design."],
+
+["🖥️","Computer Architecture",
+ "Understand CPU, memory, registers, instructions and computer organization."],
+
+["☁️","Cloud Computing",
+ "Learn cloud models, virtualization, storage and cloud services."],
+
+["🔐","Cyber Security",
+ "Understand authentication, encryption, threats and basic security practices."]
+
+];
+
+
+/* =========================
+   APPLICATION STATE
+========================= */
+
+let state = JSON.parse(
+    localStorage.getItem("cpState") ||
+    '{"attempted":0,"correct":0,"tests":0,"language":{},"readiness":0}'
+);
+
+let currentLanguage = "";
+let currentQuestions = [];
+let currentQuestion = 0;
+let currentScore = 0;
+let selectedAnswer = null;
+let timerInterval = null;
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function showPage(id){
+
+    document.querySelectorAll(".page")
+        .forEach(page => page.classList.remove("active"));
+
+    const page = document.getElementById(id);
+
+    if(page){
+        page.classList.add("active");
+    }
+
+    document.getElementById("navlinks")
+        .classList.remove("show");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    if(id==="dashboard"){
+        updateDashboard();
+    }
+}
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+function toggleMenu(){
+
+    document
+        .getElementById("navlinks")
+        .classList.toggle("show");
+
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+function toggleDark(){
+
+    const dark = document.body.dataset.dark === "true";
+
+    if(!dark){
+
+        document.body.dataset.dark = "true";
+
+        document.documentElement.style.setProperty(
+            "--bg",
+            "#0f172a"
+        );
+
+        document.documentElement.style.setProperty(
+            "--card",
+            "#1e293b"
+        );
+
+        document.documentElement.style.setProperty(
+            "--text",
+            "#f8fafc"
+        );
+
+        document.documentElement.style.setProperty(
+            "--muted",
+            "#94a3b8"
+        );
+
+        document.documentElement.style.setProperty(
+            "--border",
+            "#334155"
+        );
+
+    }else{
+
+        document.body.dataset.dark = "false";
+
+        document.documentElement.style.setProperty(
+            "--bg",
+            "#f5f7fb"
+        );
+
+        document.documentElement.style.setProperty(
+            "--card",
+            "#ffffff"
+        );
+
+        document.documentElement.style.setProperty(
+            "--text",
+            "#172033"
+        );
+
+        document.documentElement.style.setProperty(
+            "--muted",
+            "#64748b"
+        );
+
+        document.documentElement.style.setProperty(
+            "--border",
+            "#e5e7eb"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   LANGUAGE CARDS
+========================= */
+
+function renderLanguages(){
+
+    const container =
+        document.getElementById("languageCards");
+
+    const languages = [
+
+        {
+            key:"Python",
+            title:"Python",
+            icon:"🐍",
+            description:"Beginner-friendly programming language used for web development, AI, automation and data science."
+        },
+
+        {
+            key:"Java",
+            title:"Java",
+            icon:"☕",
+            description:"Popular object-oriented language used for enterprise applications, Android and backend systems."
+        },
+
+        {
+            key:"JavaScript",
+            title:"JavaScript",
+            icon:"🟨",
+            description:"Core language of modern web development used for interactive websites and web applications."
+        },
+
+        {
+            key:"C",
+            title:"C",
+            icon:"🔵",
+            description:"Fundamental programming language useful for learning memory, pointers and system programming."
+        },
+
+        {
+            key:"CPlusPlus",
+            title:"C++",
+            icon:"⚡",
+            description:"High-performance language used in software, games, competitive programming and systems."
+        },
+
+        {
+            key:"HTMLCSS",
+            title:"HTML & CSS",
+            icon:"🌐",
+            description:"Essential technologies for creating and styling modern websites."
+        }
+
+    ];
+
+    container.innerHTML = languages.map(lang => `
+
+        <div class="card language-card"
+             data-name="${lang.title.toLowerCase()}">
+
+            <div class="card-icon">
+                ${lang.icon}
+            </div>
+
+            <h3>${lang.title}</h3>
+
+            <p>${lang.description}</p>
+
+            <button onclick="startQuiz('${lang.key}')">
+                Start 20 Question Quiz →
+            </button>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+function filterLanguages(){
+
+    const value =
+        document.getElementById("languageSearch")
+        .value
+        .toLowerCase();
+
+    document
+        .querySelectorAll(".language-card")
+        .forEach(card => {
+
+            const name =
+                card.dataset.name;
+
+            card.style.display =
+                name.includes(value)
+                ? ""
+                : "none";
+
+        });
+
+}
+
+
+/* =========================
+   QUIZ
+========================= */
+
+function startQuiz(language){
+
+    currentLanguage = language;
+
+    currentQuestions =
+        [...questions[language]];
+
+    currentQuestion = 0;
+    currentScore = 0;
+    selectedAnswer = null;
+
+    showPage("quiz");
+
+    document.getElementById("quizLanguage")
+        .textContent =
+        language === "CPlusPlus"
+        ? "C++ Quiz"
+        : language === "HTMLCSS"
+        ? "HTML & CSS Quiz"
+        : language + " Quiz";
+
+    startTimer();
+
+    renderQuestion();
+
+}
+
+
+function startTimer(){
+
+    clearInterval(timerInterval);
+
+    let seconds = 600;
+
+    function update(){
+
+        const minutes =
+            Math.floor(seconds / 60);
+
+        const secs =
+            seconds % 60;
+
+        document.getElementById("timer")
+            .textContent =
+            `${String(minutes).padStart(2,"0")}:${String(secs).padStart(2,"0")}`;
+
+        if(seconds <= 0){
+
+            clearInterval(timerInterval);
+
+            finishQuiz();
+
+        }
+
+        seconds--;
+
+    }
+
+    update();
+
+    timerInterval =
+        setInterval(update,1000);
+
+}
+
+
+function renderQuestion(){
+
+    const q =
+        currentQuestions[currentQuestion];
+
+    const progress =
+        ((currentQuestion) /
+        currentQuestions.length) * 100;
+
+    document.getElementById("quizProgress")
+        .style.width = progress + "%";
+
+
+    document.getElementById("quizArea")
+        .innerHTML = `
+
+        <div class="question-card">
+
+            <div class="question-number">
+                Question ${currentQuestion + 1}
+                of ${currentQuestions.length}
+            </div>
+
+            <h2>${q[0]}</h2>
+
+            <div class="options">
+
+                <button class="option"
+                        onclick="selectOption('A',this)">
+                    <strong>A.</strong> ${q[1]}
+                </button>
+
+                <button class="option"
+                        onclick="selectOption('B',this)">
+                    <strong>B.</strong> ${q[2]}
+                </button>
+
+                <button class="option"
+                        onclick="selectOption('C',this)">
+                    <strong>C.</strong> ${q[3]}
+                </button>
+
+                <button class="option"
+                        onclick="selectOption('D',this)">
+                    <strong>D.</strong> ${q[4]}
+                </button>
+
+            </div>
+
+            <div class="quiz-actions">
+
+                <button
+                    class="btn btn-secondary"
+                    onclick="showPage('languages')">
+                    Exit Quiz
+                </button>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="submitQuestion()">
+                    ${currentQuestion === currentQuestions.length-1
+                        ? "Finish Quiz"
+                        : "Next Question →"}
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+}
+
+
+function selectOption(answer,element){
+
+    selectedAnswer = answer;
+
+    document
+        .querySelectorAll(".option")
+        .forEach(option =>
+            option.classList.remove("selected")
+        );
+
+    element.classList.add("selected");
+
+}
+
+
+function submitQuestion(){
+
+    if(!selectedAnswer){
+
+        alert("Please select an answer.");
+
+        return;
+
+    }
+
+    const correct =
+        currentQuestions[currentQuestion][5];
+
+    state.attempted++;
+
+    if(selectedAnswer === correct){
+
+        currentScore++;
+
+        state.correct++;
+
+    }
+
+    if(!state.language[currentLanguage]){
+
+        state.language[currentLanguage] = {
+            attempted:0,
+            correct:0
+        };
+
+    }
+
+    state.language[currentLanguage].attempted++;
+
+    if(selectedAnswer === correct){
+
+        state.language[currentLanguage].correct++;
+
+    }
+
+    saveState();
+
+
+    if(currentQuestion <
+       currentQuestions.length - 1){
+
+        currentQuestion++;
+
+        selectedAnswer = null;
+
+        renderQuestion();
+
+    }else{
+
+        finishQuiz();
+
+    }
+
+}
+
+
+function finishQuiz(){
+
+    clearInterval(timerInterval);
+
+    state.tests++;
+
+    state.readiness =
+        Math.min(
+            100,
+            Math.round(
+                (state.correct /
+                Math.max(state.attempted,1))
+                * 100
+            )
+        );
+
+    saveState();
+
+
+    const percentage =
+        Math.round(
+            (currentScore /
+            currentQuestions.length) * 100
+        );
+
+
+    document.getElementById("quizProgress")
+        .style.width = "100%";
+
+
+    document.getElementById("quizArea")
+        .innerHTML = `
+
+        <div class="question-card result">
+
+            <div style="font-size:55px;">
+                🎉
+            </div>
+
+            <h2>
+                Quiz Completed!
+            </h2>
+
+            <div class="result-score">
+                ${currentScore}/${currentQuestions.length}
+            </div>
+
+            <h3>
+                ${percentage}% Score
+            </h3>
+
+            <p style="margin:15px 0;color:#64748b;">
+                Keep practicing to improve your score.
+            </p>
+
+            <button
+                class="btn btn-primary"
+                onclick="showPage('languages')">
+                Try Another Quiz
+            </button>
+
+            <button
+                class="btn btn-secondary"
+                onclick="showPage('dashboard')">
+                View Dashboard
+            </button>
+
+        </div>
+
+        `;
+
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+function saveState(){
+
+    localStorage.setItem(
+        "cpState",
+        JSON.stringify(state)
+    );
+
+}
+
+
+function updateDashboard(){
+
+    document.getElementById("dashAttempted")
+        .textContent = state.attempted;
+
+    document.getElementById("dashCorrect")
+        .textContent = state.correct;
+
+    document.getElementById("dashTests")
+        .textContent = state.tests;
+
+    document.getElementById("dashReadiness")
+        .textContent = state.readiness + "%";
+
+
+    const container =
+        document.getElementById("languageProgress");
+
+
+    const names = {
+
+        Python:"Python",
+        Java:"Java",
+        JavaScript:"JavaScript",
+        C:"C",
+        CPlusPlus:"C++",
+        HTMLCSS:"HTML & CSS"
+
+    };
+
+
+    container.innerHTML =
+        Object.keys(names).map(key => {
+
+            const data =
+                state.language[key] ||
+                {
+                    attempted:0,
+                    correct:0
+                };
+
+            const percentage =
+                data.attempted
+                ? Math.round(
+                    data.correct /
+                    data.attempted * 100
+                )
+                : 0;
+
+
+            return `
+
+                <div class="card">
+
+                    <h3>
+                        ${names[key]}
+                    </h3>
+
+                    <p>
+                        ${data.correct}
+                        correct out of
+                        ${data.attempted}
+                        attempted
+                    </p>
+
+                    <div class="progress">
+
+                        <div
+                            class="progress-bar"
+                            style="width:${percentage}%">
+                        </div>
+
+                    </div>
+
+                    <strong>
+                        ${percentage}%
+                    </strong>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+}
+
+
+/* =========================
+   INTERVIEW
+========================= */
+
+function renderInterview(list=interview){
+
+    const container =
+        document.getElementById("interviewList");
+
+    container.innerHTML =
+        list.map((item,index) => `
+
+        <div class="accordion-item">
+
+            <button
+                class="accordion-question"
+                onclick="toggleAccordion(this)">
+
+                <span>
+                    ${index+1}.
+                    ${item.q}
+                </span>
+
+                <span>+</span>
+
+            </button>
+
+            <div class="accordion-answer">
+
+                <strong>
+                    ${item.category}
+                </strong>
+
+                <p style="margin-top:8px;">
+                    ${item.a}
+                </p>
+
+            </div>
+
+        </div>
+
+        `).join("");
+
+}
+
+
+function toggleAccordion(button){
+
+    const item =
+        button.parentElement;
+
+    item.classList.toggle("open");
+
+}
+
+
+function filterInterview(){
+
+    const value =
+        document.getElementById("interviewSearch")
+        .value
+        .toLowerCase();
+
+    const filtered =
+        interview.filter(item =>
+            item.q.toLowerCase().includes(value) ||
+            item.a.toLowerCase().includes(value) ||
+            item.category.toLowerCase().includes(value)
+        );
+
+    renderInterview(filtered);
+
+}
+
+
+/* =========================
+   GENERIC CARDS
+========================= */
+
+function renderCards(){
+
+    document.getElementById("dsaCards")
+        .innerHTML =
+        dsa.map(item => `
+
+            <div class="topic">
+
+                <h3>${item[0]}</h3>
+
+                <p>${item[1]}</p>
+
+            </div>
+
+        `).join("");
+
+
+    document.getElementById("sqlCards")
+        .innerHTML =
+        sql.map(item => `
+
+            <div class="topic">
+
+                <h3>${item[0]}</h3>
+
+                <p>${item[1]}</p>
+
+            </div>
+
+        `).join("");
+
+
+    document.getElementById("subjectCards")
+        .innerHTML =
+        subjects.map(item => `
+
+            <div class="card">
+
+                <div class="card-icon">
+                    ${item[0]}
+                </div>
+
+                <h3>
+                    ${item[1]}
+                </h3>
+
+                <p>
+                    ${item[2]}
+                </p>
+
+            </div>
+
+        `).join("");
+
+}
+
+
+/* =========================
+   MOCK INTERVIEW
+========================= */
+
+let mockQuestions = [];
+let mockIndex = 0;
+let mockScore = 0;
+
+
+function startMock(){
+
+    mockQuestions =
+        [...interview]
+        .sort(() => Math.random() - .5)
+        .slice(0,10);
+
+    mockIndex = 0;
+    mockScore = 0;
+
+    renderMockQuestion();
+
+}
+
+
+function renderMockQuestion(){
+
+    const container =
+        document.getElementById("mockArea");
+
+    if(mockIndex >= mockQuestions.length){
+
+        container.innerHTML = `
+
+            <div style="text-align:center">
+
+                <div style="font-size:50px">
+                    🎉
+                </div>
+
+                <h2>
+                    Mock Interview Completed
+                </h2>
+
+                <p class="mock-score">
+                    ${mockScore}/10
+                </p>
+
+                <p style="color:#64748b;margin:10px 0 20px;">
+                    Review your answers and practice again.
+                </p>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="startMock()">
+                    Start Again
+                </button>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    const q =
+        mockQuestions[mockIndex];
+
+
+    container.innerHTML = `
+
+        <p style="color:#6366f1;font-weight:bold;">
+            Question ${mockIndex+1}/10
+        </p>
+
+        <h2 style="margin:12px 0;">
+            ${q.q}
+        </h2>
+
+        <p style="color:#64748b;">
+            Category: ${q.category}
+        </p>
+
+        <div style="
+            background:#f8fafc;
+            padding:20px;
+            margin:20px 0;
+            border-radius:10px;
+        ">
+
+            <strong>
+                Suggested answer approach:
+            </strong>
+
+            <p style="margin-top:8px;">
+                ${q.a}
+            </p>
+
+        </div>
+
+        <button
+            class="btn btn-primary"
+            onclick="mockAnswered()">
+
+            I Answered It →
+
+        </button>
+
+    `;
+
+}
+
+
+function mockAnswered(){
+
+    mockScore++;
+
+    mockIndex++;
+
+    renderMockQuestion();
+
+}
+
+
+/* =========================
+   RESUME BUILDER
+========================= */
+
+function previewResume(){
+
+    const name =
+        document.getElementById("resumeName")
+        .value || "Your Name";
+
+    const role =
+        document.getElementById("resumeRole")
+        .value || "Computer Science Student";
+
+    const email =
+        document.getElementById("resumeEmail")
+        .value || "your@email.com";
+
+    const phone =
+        document.getElementById("resumePhone")
+        .value || "+91 XXXXX XXXXX";
+
+    const education =
+        document.getElementById("resumeEducation")
+        .value || "Your education details.";
+
+    const skills =
+        document.getElementById("resumeSkills")
+        .value || "Your technical skills.";
+
+    const projects =
+        document.getElementById("resumeProjects")
+        .value || "Your projects.";
+
+    const about =
+        document.getElementById("resumeAbout")
+        .value || "Your professional summary.";
+
+
+    document.getElementById("resumePreview")
+        .innerHTML = `
+
+        <h1>${escapeHTML(name)}</h1>
+
+        <div class="resume-role">
+            ${escapeHTML(role)}
+        </div>
+
+        <p>
+            Email:
+            ${escapeHTML(email)}
+        </p>
+
+        <p>
+            Phone:
+            ${escapeHTML(phone)}
+        </p>
+
+
+        <div class="resume-section">
+
+            <h3>
+                About Me
+            </h3>
+
+            <p>
+                ${escapeHTML(about)}
+            </p>
+
+        </div>
+
+
+        <div class="resume-section">
+
+            <h3>
+                Education
+            </h3>
+
+            <p>
+                ${escapeHTML(education)}
+            </p>
+
+        </div>
+
+
+        <div class="resume-section">
+
+            <h3>
+                Skills
+            </h3>
+
+            <p>
+                ${escapeHTML(skills)}
+            </p>
+
+        </div>
+
+
+        <div class="resume-section">
+
+            <h3>
+                Projects
+            </h3>
+
+            <p>
+                ${escapeHTML(projects)}
+            </p>
+
+        </div>
+
+        `;
+
+}
+
+
+function escapeHTML(value){
+
+    return value
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
+
+
+function printResume(){
+
+    const content =
+        document.getElementById("resumePreview")
+        .innerHTML;
+
+    const win =
+        window.open("","_blank");
+
+    win.document.write(`
+
+        <html>
+
+        <head>
+
+            <title>Resume</title>
+
+            <style>
+
+                body{
+                    font-family:Arial;
+                    padding:40px;
+                    line-height:1.6;
+                }
+
+                h1{
+                    margin-bottom:5px;
+                }
+
+                h3{
+                    border-bottom:2px solid #6366f1;
+                    padding-bottom:5px;
+                }
+
+                .resume-role{
+                    color:#6366f1;
+                }
+
+            </style>
+
+        </head>
+
+        <body>
+
+            ${content}
+
+        </body>
+
+        </html>
+
+    `);
+
+    win.document.close();
+
+    win.print();
+
+}
+
+
+/* =========================
+   LOGIN MODAL
+========================= */
+
+function openModal(){
+
+    document
+        .getElementById("loginModal")
+        .classList.add("active");
+
+}
+
+
+function closeModal(){
+
+    document
+        .getElementById("loginModal")
+        .classList.remove("active");
+
+}
+
+
+function fakeLogin(){
+
+    const email =
+        document.getElementById("loginEmail")
+        .value;
+
+    const password =
+        document.getElementById("loginPassword")
+        .value;
+
+
+    if(!email || !password){
+
+        alert("Please enter email and password.");
+
+        return;
+
+    }
+
+
+    alert(
+        "Login successful! Welcome to CodePractice."
+    );
+
+    closeModal();
+
+}
+
+
+/* =========================
+   INITIALIZE WEBSITE
+========================= */
+
+renderLanguages();
+
+renderInterview();
+
+renderCards();
+
+updateDashboard();
+
+
+/* Close modal when clicking outside */
+
+document
+    .getElementById("loginModal")
+    .addEventListener("click",function(e){
+
+        if(e.target === this){
+
+            closeModal();
+
+        }
+
+    });
+
+</script>
+
+</body>
+</
